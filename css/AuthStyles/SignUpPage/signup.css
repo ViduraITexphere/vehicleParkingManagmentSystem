@@ -9,18 +9,27 @@
     display: flex;
 
   }
+  .wrapper-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
   .wrapper_row_1 {
     display: flex;
     gap: 40px;
 
   }
+  .form-group {
+    width: 100%;
+  }
   .container{
     margin: auto;
-    width: 600px;
-    max-width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .container form {
-    width: 100%;
+    width: 600px;
     height: 100%;
     padding: 100px 70px;
     background-color: rgb(54, 54, 54);
@@ -57,4 +66,14 @@
   }
   .container form .submit_button:hover{
     background-color: rgb(37, 37, 37);
+  }
+  .signin_link{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
