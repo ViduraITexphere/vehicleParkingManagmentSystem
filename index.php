@@ -1,4 +1,7 @@
 <?php
+ session_start()
+?>
+<?php
 include_once('inc/conn.php');
 ?>
 <?php
@@ -16,31 +19,65 @@ if(isset($_POST['submit'])){
     //INSERT Values into database
     $query1 = "SELECT * FROM tbl_user WHERE email = '{$email}' AND pwd ='{$password}' LIMIT 1";
     $showResult = mysqli_query($conn, $query1);
+    $row = mysqli_fetch_array($showResult);
 
 
+    if ($row["user_type"]=="user")
+    {
+      $_SESSION['user_fname'] = $user['fname'];
+      $_SESSION['user_lname'] = $user['lname'];
 
-    if($showResult){
+      // header("Refresh: 2; url= Pages/Home/index.php");
       if (mysqli_num_rows($showResult) == 1) {
-        // header("Location: Pages/Home/index.php");
-        
-      header("Refresh:2; url=Pages/Home/index.php");
-      $msg = "<div class='alert alert-primary alert-dismissible fade show' role='alert'>
-      <strong>User Login Success! </strong> User Redirect to the Home Page.
-    </div>";
 
-
-      
+        $user = mysqli_fetch_assoc($showResult);
+        header("Location: Pages/Home/index.php");
+        $msg = "<div class='alert alert-primary alert-dismissible fade show' role='alert'>
+        <strong>User Login Success! </strong> User Redirect to the Home Page.
+      </div>";
       }
       else{
         $msg = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
         <strong>Please check your email or password! </strong> Enter correct credentials.
       </div>";
       }
-     
-        
+    }
+    else if ($row["user_type"]=="admin")
+    {
+      header("Location: Pages/Home/Admin.php");
+    }
+    else
+    {
+      echo "error";
     }
 
+
+    // if($showResult){
+    //   if (mysqli_num_rows($showResult) == 1) {
+    //     // header("Location: Pages/Home/index.php");
+
+    //     $user = mysqli_fetch_assoc($showResult);
+        
+        
+    //   header("Refresh:2; url=Pages/Home/index.php");
+    //   $msg = "<div class='alert alert-primary alert-dismissible fade show' role='alert'>
+    //   <strong>User Login Success! </strong> User Redirect to the Home Page.
+    // </div>";
+
+
+      
+    //   }
+    //   else{
+    //     $msg = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+    //     <strong>Please check your email or password! </strong> Enter correct credentials.
+    //   </div>";
+    //   }
+     
+        
+    // }
+
 }
+
 
 function input_validate($data){
 
@@ -89,5 +126,6 @@ function input_validate($data){
         </div>
       </form>
     </div>
+
   </body>
 </html>

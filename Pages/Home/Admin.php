@@ -3,9 +3,17 @@
 
 <head>
     <link rel="stylesheet" href="../../bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
 
     <title>Document</title>
     <style>
@@ -19,10 +27,6 @@
         margin: 0;
     }
 
-    [class*="row"] {}
-
-    [class*="con"] {}
-
     .sidebar {
         background-color: lightblue;
         height: 100vh;
@@ -30,15 +34,8 @@
         margin: 0;
     }
 
-    .content {}
+    /* //////////////////////You can edit this ////////////////////// */
 
-    .topic {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
     </style>
 </head>
 
@@ -47,14 +44,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2">
-                <!-- <div class="sidebar"></div> -->
-                <?php include "Drawer.php" ?>
+                <!-- <?php include "Drawer.php" ?> -->
             </div>
             <div class="col-md-10">
                 <div class="content">
-                    <div class="topic">
-                        <h2>Hello Kaushlya 🚀</h2>
-                    </div>
+                    <h1>Kaushalya Modaya<h1>
+
                 </div>
             </div>
         </div>

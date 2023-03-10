@@ -10,6 +10,7 @@ if(isset($_POST['submit'])){
     $password = "";
     $contact = "";
     $address = "";
+    $user_type = "";
     $msg = "";
 
     //catch input data
@@ -19,6 +20,7 @@ if(isset($_POST['submit'])){
     $password = input_validate($_POST['password']);
     $contact = input_validate($_POST['contact']);
     $address = input_validate($_POST['address']);
+    $user_type = input_validate($_POST['user_type']);
 
     $query1 = "SELECT * FROM tbl_user WHERE fname = '{$firstname}' AND email ='{$email}'";
 
@@ -31,7 +33,7 @@ if(isset($_POST['submit'])){
     }
     else{
         //INSERT Values into database
-        $query = "INSERT INTO tbl_user(fname, lname, email, pwd, contact, address) VALUES('{$firstname}', '{$lastname}', '{$email}', '{$password}', '{$contact}', '{$address}')";
+        $query = "INSERT INTO tbl_user(fname, lname, email, pwd, contact, address, user_type) VALUES('{$firstname}', '{$lastname}', '{$email}', '{$password}', '{$contact}', '{$address}', '{$user_type}')";
 
         //process the query
         //need two parameter
@@ -124,6 +126,11 @@ function input_validate($data){
               <input type="text" class="form-control" name="address" required />
             </div>
           </div>
+          <div class="wrapper_row_1">
+            <div class="form-group" style="display: none;">
+              <label>Contact No</label>
+              <input type="text" class="form-control" name="user_type" required value="user" />
+            </div>
         </div>
         
         <input type="submit" class="submit_button" name="submit" value="Register" />
