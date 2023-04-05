@@ -1,3 +1,32 @@
+<?php
+include_once('../../inc/conn.php');
+// $id = $_GET['id'];
+
+if (isset($_POST['submit'])) {
+    //declaring variables and assign empty values
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $pwd = $_POST['pwd'];
+    $contact = $_POST['contact'];
+    $address = $_POST['address'];
+    $user_type = $_POST['user_type'];
+
+
+
+    //INSERT Values into database
+    $query1 = "UPDATE `tbl_user` SET `fname`='$fname',`lname`='$lname', `email`='$email',`pwd`='$pwd', `contact`='$contact',`address`='$address', ,`user_type`='$user_type' WHERE id=$id";
+    $showResult = mysqli_query($conn, $query1);
+    if ($showResult) {
+        header("Location: ManageParkingSlots.php?msg=data Updated successfully");
+    } else {
+        echo "Error: " . $query1 . "<br>" . mysqli_error($conn);
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,17 +43,19 @@
 
     <title>Document</title>
     <style>
-        [class*="col"] {
-            padding: 0;
-            margin: 0;
-            background-color: #f7f7f7;
-        }
-        .column1{
-            background-color: #ffffff;
-        }
-        .column2{
-            background-color: #ffffff;
-        }
+    [class*="col"] {
+        padding: 0;
+        margin: 0;
+        background-color: #f7f7f7;
+    }
+
+    .column1 {
+        background-color: #ffffff;
+    }
+
+    .column2 {
+        background-color: #ffffff;
+    }
     </style>
 </head>
 
@@ -38,75 +69,86 @@
             </div>
             <div class="col-md-10">
                 <div class="content">
+                    <?php
+                    include_once('../../inc/conn.php');
+                    $id = $_GET['id'];
+                    $query = "SELECT * FROM tbl_user WHERE id=$id";
+                    $showResult = mysqli_query($conn, $query);
+                    $row = mysqli_fetch_assoc($showResult);
+
+                    ?>
                     <div class="content_wrapper">
                         <h2>Manage User</h2>
                         <div class="form-wrapper">
-                            <form>
+                            <form action="User.php" method="post">
                                 <div class="form-inside-wrapper">
                                     <div class="form-devider">
                                         <div class="column1">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Groups</label>
-                                                <select class="form-control">
-                                                    <option>User</option>
-                                                    <option>Admin</option>
-                                                    <option>Super Admin</option>
-                                                </select>
+
+                                                <label for="exampleInputPassword1">User Id</label>
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="First Name" name="id" value="<?php echo $row['id'] ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">User Name</label>
-                                                <input type="text" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" placeholder="User Name">
+
+                                                <label for="exampleInputPassword1">First Name</label>
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="First Name" name="fname"
+                                                    value="<?php echo $row['fname'] ?>">
                                             </div>
+
+
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Email address</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" placeholder="Enter email">
+                                                    aria-describedby="emailHelp" placeholder="Enter email" name="email"
+                                                    value="<?php echo $row['email'] ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Password</label>
                                                 <input type="password" class="form-control" id="exampleInputPassword1"
-                                                    placeholder="Password">
+                                                    placeholder="Password" name="pwd" value="<?php echo $row['pwd'] ?>">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Confirm Password</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword1"
-                                                    placeholder="Password">
-                                            </div>
+
                                         </div>
                                         <div class="column2">
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">First Name</label>
-                                                <input type="text" class="form-control" id="exampleInputPassword1"
-                                                    placeholder="First Name">
-                                            </div>
+
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Last Name</label>
                                                 <input type="text" class="form-control" id="exampleInputPassword1"
-                                                    placeholder="Last Name">
+                                                    placeholder="Last Name" name="lname"
+                                                    value="<?php echo $row['lname'] ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Phone Number</label>
                                                 <input type="text" class="form-control" id="exampleInputPassword1"
-                                                    placeholder="Phone Number">
+                                                    placeholder="Phone Number" name="contact"
+                                                    value="<?php echo $row['contact'] ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Phone Number</label>
+                                                <label for="exampleInputPassword1">Address</label>
                                                 <input type="text" class="form-control" id="exampleInputPassword1"
-                                                    placeholder="Phone Number">
+                                                    placeholder="Phone Number" name="address"
+                                                    value="<?php echo $row['address'] ?>">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Gender</label>
 
-                                                <select class="form-select" aria-label="Active" name="status"
-                                                    style="border: 1px solid #b3b3b3;">
-                                                    <option selected>Mail</option>
-                                                    <option selected>Female</option>
-                                                    <option selected>Intersex</option>
-                                                    <option selected>Trans</option>
-                                                    <option selected>Non-Conforming</option>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">User Group</label>
+
+                                                <select class="form-select" name="user_type"
+                                                    value="<?php echo $row['user_type'] ?>">
+                                                    <option value="Available"
+                                                        <?= $row['user_type'] == 'Available' ? ' selected="selected"' : ''; ?>>
+                                                        User</option>
+                                                    <option value="Unavailable"
+                                                        <?= $row['user_type'] == 'Unavailable' ? ' selected="selected"' : ''; ?>>
+                                                        Admin</option>
+
+
                                                 </select>
                                             </div>
+
 
                                         </div>
                                     </div>
@@ -114,7 +156,7 @@
                             </form>
                         </div>
                         <div class="button-submit">
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <button name="submit" type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
                     </div>
                 </div>

@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
       if (mysqli_num_rows($showResult) == 1) {
 
         $user = mysqli_fetch_assoc($showResult);
-        header("Location: Pages/Home/index.php");
+        header("Location: Pages/User/Home/UserHome.php");
         $msg = "<div class='alert alert-primary alert-dismissible fade show' role='alert'>
         <strong>User Login Success! </strong> User Redirect to the Home Page.
       </div>";
@@ -44,7 +44,7 @@ if(isset($_POST['submit'])){
     }
     else if ($row["user_type"]=="admin")
     {
-      header("Location: Pages/Home/Admin.php");
+      header("Location: Pages/Home/index.php");
     }
     else
     {
