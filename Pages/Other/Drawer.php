@@ -18,6 +18,10 @@
             height: 100vh;
             padding: 0;
             margin: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
         }
 
         .sidebar_menu {
@@ -97,9 +101,11 @@
             <div class="sidebar_menu">
                 <div class="sidebar_menu_item">
                     <i class="bi bi-p-square-fill"></i>
-                    <a href="ManageUsers.php" type="text" data-toggle="dropdown" style="color:aliceblue">
-                        Manage User
-                    </a>
+                    <a href="Users.php" type="text" data-toggle="dropdown" style="color:aliceblue">
+                        <a href="../../Pages/Other/ManageUsers.php">
+
+                            Manage User
+                        </a>
                 </div>
                 <div class="sidebar_menu_item">
                     <i class="bi bi-person-fill"></i>

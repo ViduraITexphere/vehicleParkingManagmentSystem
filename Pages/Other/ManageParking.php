@@ -156,10 +156,10 @@
                                         <td><?php echo $row['id'] ?></td>
                                         <td><?php echo $row['check_in_time'] ?></td>
                                         <td><?php echo $row['check_in_date'] ?></td>
-                                        <td><?php echo $row['checkout_time'] ?></td>
-                                        <td><?php echo $row['checkout_date'] ?></td>
+                                        <td><?php echo $row['check_out_time'] ?></td>
+                                        <td><?php echo $row['check_out_date'] ?></td>
                                         <td><?php echo $row['vehicle_type'] ?></td>
-                                        <td><?php echo $row['rate'] ?></td>
+                                        <td><?php echo $row['total_rate'] ?></td>
                                         <td><?php echo $row['slot'] ?></td>
                                         <td><?php echo $row['total_time'] ?></td>
                                         <td><?php echo $row['paid_status'] ?></td>
