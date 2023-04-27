@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO tbl_parking (slot, vehicle_type, check_in_date, check_in_time, check_out_date, check_out_time, total_time, total_rate, paid_status) VALUES ('$slot_id', '$vehicle_type', '$check_in_date', '$check_in_time', '$check_out_date', '$check_out_time', '$total_hours', '$total_rate', '$paid_status')";
 
     if (mysqli_query($conn, $sql)) {
-        echo "Record inserted successfully.";
+        header("Location: Checkout.php?msg=data Updated successfully");
     } else {
         echo "Error inserting record: " . mysqli_error($conn);
     }
